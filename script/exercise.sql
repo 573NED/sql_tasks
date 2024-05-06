@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS exercise;
 
 CREATE DATABASE exercise;
 
-USE exercise;
+\connect exercise; 
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
