@@ -34,11 +34,10 @@ WHERE id = 1;
 DELETE FROM messages
 WHERE id = 2;
 
-SELECT * FROM messages AS m
-WHERE NOT EXISTS (
-    SELECT 1 FROM messages AS m2
-    WHERE m2.id != m.id AND m2.user_id = m.user_id
-);
+SELECT u.username, m.content, m.created_at
+FROM messages AS m
+INNER JOIN users AS u ON m.user_id = u.id  -- Join tables on user_id
+WHERE u.username = 'new_username';  -- Select by username
 
 DELETE FROM users
 WHERE id = 1;
