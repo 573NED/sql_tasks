@@ -18,6 +18,8 @@ CREATE TABLE messages (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX idx_users_username ON users(username);
+
 INSERT INTO users (username, email, password) VALUES
     ('user1', 'user1@example.com', 'password1'),
     ('user2', 'user2@example.com', 'password2');
@@ -33,11 +35,6 @@ WHERE id = 1;
 
 DELETE FROM messages
 WHERE id = 2;
-
-SELECT u.username, m.content, m.created_at
-FROM messages AS m
-INNER JOIN users AS u ON m.user_id = u.id  -- Join tables on user_id
-WHERE u.username = 'new_username';  -- Select by username
 
 DELETE FROM users
 WHERE id = 1;
