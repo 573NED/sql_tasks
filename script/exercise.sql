@@ -42,4 +42,7 @@ WHERE u.username = 'new_username';  -- Select by username
 DELETE FROM users
 WHERE id = 1;
 
-EXPLAIN SELECT * FROM messages WHERE user_id = 1;
+EXPLAIN ANALYZE SELECT u.username, m.content, m.created_at
+FROM messages AS m
+INNER JOIN users AS u ON m.user_id = u.id
+WHERE u.username = 'new_username';
